@@ -1,0 +1,16 @@
+table {
+    table-layout: fixed;
+    word-wrap: break-word;
+   width: 50%; 
+ word-break: break-all; 
+ font-size:14px;
+}
+td {
+    table-layout: fixed;
+    word-wrap: break-word;
+   width: 50%; 
+ word-break: break-all; 
+ font-size:14px;
+ color:red;
+ 
+}

@@ -1,0 +1,23 @@
+.err-msg {
+    width:100%;
+    color: red;
+    font-size: 14px;
+    font-weight:600;
+}
+
+.pdf-container {
+    width:30%;
+    height:300px;
+    overflow-y:auto;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin:10px;
+
+}
+.card_project{
+width: 100%;
+height:200px;
+display:flex;
+flex-direction: row;
+}

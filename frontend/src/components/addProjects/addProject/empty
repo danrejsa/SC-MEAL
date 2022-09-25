@@ -1,0 +1,2104 @@
+import './assets/scss/material-dashboard/bootstrap/forms/_floating-labels.scss';
+import './assets/scss/material-dashboard/bootstrap/forms/_form-check.scss';
+import './assets/scss/material-dashboard/bootstrap/forms/_form-control.scss';
+import './assets/scss/material-dashboard/bootstrap/forms/_form-range.scss';
+import './assets/scss/material-dashboard/bootstrap/forms/_form-select.scss';
+import './assets/scss/material-dashboard/bootstrap/forms/_form-text.scss';
+import './assets/scss/material-dashboard/bootstrap/forms/_input-group.scss';
+import './assets/scss/material-dashboard/bootstrap/forms/_labels.scss';
+import './assets/scss/material-dashboard/bootstrap/forms/_validation.scss';
+import './assets/scss/material-dashboard/bootstrap/_accordion.scss';
+import './assets/scss/material-dashboard/_alert.scss';
+import './assets/scss/material-dashboard/_badge.scss';
+import './assets/scss/material-dashboard/_breadcrumb.scss';
+import './assets/scss/material-dashboard/_buttons.scss';
+import './assets/scss/material-dashboard/_card.scss';
+import './assets/scss/material-dashboard/bootstrap/forms/_carousel.scss';
+import './assets/scss/material-dashboard/bootstrap/forms/_close.scss';
+import './assets/scss/material-dashboard/bootstrap/forms/_containers.scss';
+import './assets/scss/material-dashboard/bootstrap/forms/_dropdown.scss';
+import './assets/scss/material-dashboard/bootstrap/forms/_forms.scss';
+import './assets/scss/material-dashboard/bootstrap/forms/_functions.scss';
+import './assets/scss/material-dashboard/bootstrap/forms/_grid.scss';
+import './assets/scss/material-dashboard/bootstrap/forms/_helpers.scss';
+import './assets/scss/material-dashboard/bootstrap/forms/_images.scss';
+import './assets/scss/material-dashboard/bootstrap/forms/_modal.scss';
+import './assets/scss/material-dashboard/bootstrap/forms/_nav.scss';
+import './assets/scss/material-dashboard/bootstrap/forms/_navbar.scss';
+import './assets/scss/material-dashboard/bootstrap/forms/_type.scss';
+import './assets/scss/material-dashboard/bootstrap/forms/_bootstrap-grid.scss';
+import './assets/scss/material-dashboard/bootstrap/forms/_transitions.scss';
+import './assets/scss/material-dashboard/bootstrap/bootstrap-grid.scss';
+import './assets/scss/material-dashboard/bootstrap/bootstrap-reboot.scss';
+import './assets/scss/material-dashboard/bootstrap/bootstrap-utilities.scss';
+import './assets/scss/material-dashboard/bootstrap/bootstrap.scss';
+
+
+<body className="g-sidenav-show  bg-gray-100">
+            <aside className="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main">
+            <div class="sidenav-header">
+                  <i className="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+                  <a className="navbar-brand m-0" href=" https://demos.creative-tim.com/material-dashboard/pages/dashboard " target="_blank">
+                  <img src="./assets/sconlogo.png" className="navbar-brand-img h-100" alt="main_logo"/>
+                  <span className="ms-1 font-weight-bold text-white">MEAL Dashboard</span>
+                  </a>
+              </div>
+            </aside>
+       </body>
+
+
+
+
+       import React from 'react'
+import '../index.css';
+import {sidebarData} from './sidebarData';
+import { Routes, Route, Link, BrowserRouter } from "react-router-dom";
+
+
+function SideBar() {
+    return (
+        
+        <Router className='sidebar'>
+            <ul className="sidebarList">
+            {
+                sidebarData.map((val, key) => {
+                    return (
+                    <Link className="row" id={window.location.pathname === val.link ? "active": " " } key={key} onClick={() => window.location.pathname = val.link}>
+                            {""}
+                            <div id="icon">{val.icon}</div>
+                            <div id="title">{val.title}</div>
+                    </Link>
+                )
+            })
+        }
+            </ul>
+        </Router>
+    )
+}
+
+export default SideBar
+
+
+
+
+class App extends Component {
+  render() {
+    const routeComponents = 
+    routes.map(({path, component}, key) => <Route exact path={path} component={component} key={key} />);
+    return (
+      <BrowserRouter>
+        {routeComponents}
+        </div>
+      </BrowserRouter>
+    );
+  }
+}
+
+
+
+import './assets/css/material-dashboard.css';
+import './assets/css/material-dashboard.css.map';
+import './assets/css/material-dashboard.min.css';
+import './assets/css/nucleo-icons.css';
+import './assets/css/nucleo-svg.css';
+import './assets/fonts/nucleo-icons.eot';
+import './assets/fonts/nucleo-icons.svg';
+import './assets/fonts/nucleo-icons.ttf';
+import './assets/fonts/nucleo-icons.woff';
+import './assets/fonts/nucleo-icons.woff2';
+import './assets/fonts/nucleo.eot';
+import './assets/fonts/nucleo.ttf';
+import './assets/fonts/nucleo.woff';
+import './assets/fonts/nucleo.woff2';
+import './assets/img/icons/flags/AU.png';
+import './assets/img/icons/flags/BR.png';
+import './assets/img/icons/flags/DE.png';
+import './assets/img/icons/flags/GB.png';
+import './assets/img/icons/flags/US.png';
+import './assets/img/illustrations/chat.png';
+import './assets/img/illustrations/dark-lock-ill.png';
+import './assets/img/illustrations/danger-chat-ill.png';
+import './assets/img/illustrations/lock.png';
+import './assets/img/illustrations/illustration-reset.jpg';
+import './assets/img/illustrations/illustration-lock.jpg';
+import './assets/img/illustrations/illustration-signin.jpg';
+import './assets/img/illustrations/illustration-signup.jpg';
+import './assets/img/illustrations/illustration-verification.jpg';
+import './assets/img/logos/gray-logos/logo-coinbase.svg';
+import './assets/img/logos/gray-logos/logo-nasa.svg';
+import './assets/img/logos/gray-logos/logo-netflix.svg';
+import './assets/img/favicon.png';
+import './assets/img/down-arrow.svg';
+import './assets/img/down-arrow-white.svg';
+import React, { useEffect, useState, Fragment } from "react";
+import {Container, AppBar, Typography, Grow, Grid, RootRef} from "@material-ui/core";
+import sconlogo from "./assets/sconlogo.png";
+import Sidebar from './components/sidebar';
+import Posts from './components/posts/posts';
+import Form from './components/form/form';
+
+import useStyles from './styles';
+import { useDispatch } from 'react-redux';
+import { getPosts } from './actions/post';
+import './assets/css/material-dashboard.css';
+import './assets/css/material-dashboard.css.map';
+import './assets/css/material-dashboard.min.css';
+import './assets/css/nucleo-icons.css';
+import './assets/css/nucleo-svg.css';
+import './assets/fonts/nucleo-icons.eot';
+import './assets/fonts/nucleo-icons.svg';
+import './assets/fonts/nucleo-icons.ttf';
+import './assets/fonts/nucleo-icons.woff';
+import './assets/fonts/nucleo-icons.woff2';
+import './assets/fonts/nucleo.eot';
+import './assets/fonts/nucleo.ttf';
+import './assets/fonts/nucleo.woff';
+import './assets/fonts/nucleo.woff2';
+import './assets/img/icons/flags/AU.png';
+import './assets/img/icons/flags/BR.png';
+import './assets/img/icons/flags/DE.png';
+import './assets/img/icons/flags/GB.png';
+import './assets/img/icons/flags/US.png';
+import './assets/img/illustrations/chat.png';
+import './assets/img/illustrations/dark-lock-ill.png';
+import './assets/img/illustrations/danger-chat-ill.png';
+import './assets/img/illustrations/lock.png';
+import './assets/img/illustrations/illustration-reset.jpg';
+import './assets/img/illustrations/illustration-lock.jpg';
+import './assets/img/illustrations/illustration-signin.jpg';
+import './assets/img/illustrations/illustration-signup.jpg';
+import './assets/img/illustrations/illustration-verification.jpg';
+import './assets/img/logos/gray-logos/logo-coinbase.svg';
+import './assets/img/logos/gray-logos/logo-nasa.svg';
+import './assets/img/logos/gray-logos/logo-netflix.svg';
+import './assets/img/favicon.png';
+import './assets/img/down-arrow.svg';
+import './assets/img/down-arrow-white.svg';
+import HomeIcon from "@material-ui/icons/Home";
+import DashboardIcon from "@material-ui/icons/Dashboard";
+import AssessmentIcon from "@material-ui/icons/Assessment";
+import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
+import HomeRepairServiceIcon from '@mui/icons-material/HomeRepairService';
+import CreditCardIcon from '@mui/icons-material/CreditCard';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import RouterComponent from "./components/router";
+import Home from "./components/home";
+import Project from "./components/project";
+import Dashboard from "./components/dashboard";
+
+
+const App = () => {
+    const [currentId, setCurrentId] = useState(null);
+    const classes = useStyles();
+    const dispatch = useDispatch()
+  
+
+useEffect( () => {dispatch(getPosts())}, [currentId, dispatch])
+
+    return (
+  //  <Container maxidth="lg">
+    //        <AppBar className={classes.appBar} position="static" color="inherit">
+      //          <Typography className={classes.heading} variant="h2" align="center">SCoN MEAL Dashboard</Typography>
+        //        <img className={classes.image} src={sconlogo} alt="sconlogo" height="60" />
+          //  </AppBar> 
+            //    <Grow in>
+              //      <Container>
+                //        <Grid container justify="space-between" alignItems="stretch" spacing={3}>
+                  //          <Grid item xs={12} sm={7}>
+                    //            <Posts setCurrentId={setCurrentId}/>
+                      //      </Grid>
+            //                <Grid item xs={12} sm={4}>
+              //                  <Form currentId={currentId} setCurrentId={setCurrentId}/>
+                //            </Grid>
+                  //      </Grid>
+                    //</Container>
+              //  </Grow>
+   // </Container>
+  <div className="App">
+
+    <BrowserRouter classname="browser-router">
+    <Sidebar className="App-sidebar"/>
+      <Routes className="App-route">
+        <Route path="/" element={<Home />}>
+          <Route index element={<Home />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="project" element={<Project />} />
+          
+        </Route>
+      </Routes>
+    </BrowserRouter>
+      
+  </div>
+    )
+}
+
+export default App;
+
+
+
+
+export const UserData = [
+    {
+    id:1,
+    year: "Jan",
+    UserGain: 1000,
+    UserLoss: 400
+    },
+    {
+        id:2,
+        year: "Feb",
+        UserGain: 1520,
+        UserLoss: 200
+        },
+    
+        {
+            id:3,
+            year: "Mar",
+            UserGain: 2090,
+            UserLoss: 500
+            },
+            {
+                id:4,
+                year: "Apr",
+                UserGain: 3510,
+                UserLoss: 100
+                },
+                {
+                    id:5,
+                    year: "May",
+                    UserGain: 3591,
+                    UserLoss: 800
+                    },
+                    {
+                        id:1,
+                        year: "June",
+                        UserGain: 4667,
+                        UserLoss: 500
+                        },
+                        {
+                            id:6,
+                            year: "Jul",
+                            UserGain: 5128,
+                            UserLoss: 600
+                            },
+                            {
+                                id:7,
+                                year: "Aug",
+                                UserGain: 6800,
+                                UserLoss: 400
+                                },
+                                {
+                                    id:8,
+                                    year: "Sep",
+                                    UserGain: 7500,
+                                    UserLoss: 200
+                                    },
+                                    {
+                                        id:8,
+                                        year: "Oct",
+                                        UserGain: 7590,
+                                        UserLoss: 200
+                                        },
+                                        {
+                                            id:8,
+                                            year: "Nov",
+                                            UserGain: 8006,
+                                            UserLoss: 200
+                                            },
+                                            {
+                                                id:8,
+                                                year: "Dec",
+                                                UserGain: 9700,
+                                                UserLoss: 200
+                                                },
+                                                                                                                                                
+]
+
+ app.put('/update', async (req, res) => {
+    const id = req.body.id;
+    const newDonor = req.body.donor;
+    const newCode = req.body.code;
+    const newTitle = req.body.title;
+    const newDuration = req.body.duration;
+    const newDescription = req.body.description;
+
+    try{
+        await ProjectModel.findByIdAndUpdate((id, error, projectToUpdate) => {
+            projectToUpdate.donor = newDonor;
+            projectToUpdate.code = newCode;
+            projectToUpdate.title = newTitle;
+            projectToUpdate.duration = newDuration;
+            projectToUpdate.description= newDescription;
+          
+            projectToUpdate.save();
+
+        });
+    }catch(err){
+            console.log(err)
+    }
+   res.send('Updated successfully');
+})
+
+
+
+
+import "../index.css";
+import React, { useEffect, useState, Fragment } from "react";
+import AddTwoToneIcon from '@mui/icons-material/AddTwoTone';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter,Form, FormGroup, Label, Input } from 'reactstrap';
+import PropTypes from 'prop-types';
+import ProjectForm from "./projectForm";
+import axios from 'axios';
+import DeleteIcon from "@material-ui/icons/Delete";
+import moment from "moment";
+import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
+import EditIcon from '@mui/icons-material/Edit';
+import { useDispatch } from 'react-redux';
+import { getProjects } from '../actions/projects';
+import { useSelector } from 'react-redux';
+
+
+
+function Project(props) {
+
+  const projects = useSelector((state) => state.projects);
+  const [currentId, setCurrentId] = useState(null);
+  //const classes = useStyles();
+  const dispatch = useDispatch()
+useEffect( () => {dispatch(getProjects())}, [currentId, dispatch])
+ console.log(projects)
+  const { className } = props;
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal)
+  const closeBtn = (
+    <button className="close" onClick={toggle} type="button">
+      &times;
+    </button>
+  );
+  
+  const [donor, setDonor] = useState("");
+  const [code, setCode] = useState("");
+  const [title, setTitle] = useState("");
+  const [duration, setDuration] = useState(0);
+  const [description, setDescription] = useState("");
+  const [listofProject, setListofProject] = useState([])
+
+    
+  const addProject = () => {
+      axios.post('http://localhost:5000/addproject', {
+        donor: donor,
+        code: code,
+        title: title,
+        duration: duration,
+        description: description,
+       
+     // }).then(() => {
+       // alert('New project created Successfully!')
+     // }).catch(() => {
+       // alert('Failed to create new project!')
+      }).then(() => {
+        setListofProject([...listofProject, {
+          donor: donor,
+          code: code,
+          title: title,
+          duration: duration,
+          description: description,
+        }])
+      })
+      toggle();
+    };
+
+//const updateProject = (id) => {
+
+//}
+
+const deleteProject = (id) => {
+ axios.delete(`http://localhost:5000/delete/${id}`).then(() => {
+   setListofProject(
+     listofProject.filter((val) => {
+       return val._id != id
+     })
+   )
+ })
+
+}
+
+useEffect(() => {
+  axios.get('http://localhost:5000/projects')
+  .then((response) => {
+
+    setListofProject(response.data)
+   // alert('Projects gotten Successfully!')
+  }).catch(() => {
+    console.log('ERROR')
+  //  alert('Failed to get project!')
+  })
+}, [])  
+    
+
+    
+        return (
+          
+        <div class="container-fluid py-3">
+              <div class="row" > 
+            <div class="col-xl-2 col-sm-6 mb-l-0 mb-4" >
+              <div class="card" >
+                <div class="card-header p-2 pt-2" id="add_new_project" onClick={toggle}>
+                  <div class="text-center pt-1" >
+                    <h5 class="text-sm mb-0 text-capitalize">ADD NEW PROJECT</h5>
+                    <AddTwoToneIcon  fontSize='large'/>
+                  </div>
+                 
+                </div>
+           
+                <hr class="dark horizontal my-0"/>
+                <div class="card-footer p-3">
+             
+                </div>
+              </div>
+            </div>
+           </div>
+        <Modal isOpen={modal} toggle={toggle} className={className}>
+        <ModalHeader toggle={toggle} close={closeBtn}>
+          Add New Project
+        </ModalHeader>
+        <ModalBody>
+<Form >
+  <FormGroup >
+    <Label for="projectDonor" >
+      Project Donor
+    </Label>
+    <Input
+    className="square border border-muted"
+      id="projectDonor"
+      name="donor"
+      type="text"
+      onChange={(e) => { setDonor(e.target.value)}}
+    />
+  </FormGroup>
+  <FormGroup >
+    <Label for="projectCode" >
+      Project Code
+    </Label>
+    <Input
+    className="square border border-muted"
+      id="projectCode"
+      name="projectCode"
+      type="text"
+      onChange={(e) => { setCode(e.target.value)}}
+    />
+  </FormGroup>
+  <FormGroup>
+    <Label for="projectTitle">
+      Project Title
+    </Label>
+    <Input
+    className="square border border-muted"
+      id="projectTitle"
+      name="title"
+      type="text"
+      onChange={(e) => { setTitle(e.target.value)}}
+    />
+  </FormGroup>
+  <FormGroup>
+    <Label for="projectDuration">
+      Project Duration (in years)
+    </Label>
+    <Input
+    className="square border border-muted"
+      id="projectDuration"
+      name="select"
+      type="select"
+      onChange={(e) => { setDuration(e.target.value)}}
+    >
+        <option >
+        
+        </option>
+      <option>
+        1 
+      </option>
+      <option>
+        2
+      </option>
+      <option>
+        3 
+      </option>
+      <option>
+        4 
+      </option>
+      <option>
+        5 
+      </option>
+    </Input>
+  </FormGroup>
+  <FormGroup >
+    <Label for="projectDescription" >
+      Project Description
+    </Label>
+    <Input
+    className="square border border-muted"
+      id="projectDescription"
+      name="projectDescription"
+      type="text"
+      onChange={(e) => { setDescription(e.target.value)}}
+    />
+  </FormGroup>
+ 
+ 
+  
+</Form>
+        </ModalBody>
+        <ModalFooter>
+          <Button color="primary" onClick={addProject}>
+            Add Project
+          </Button>{' '}
+          <Button color="secondary" onClick={toggle}>
+            Cancel
+          </Button>
+        </ModalFooter>
+      </Modal>
+      {listofProject.map((val) => (
+      
+         <div class="container-fluid py-3 flex-xl-column" >
+          <div class="row mt-3 p-2">
+          <div class="col-lg-4 col-md-6 mt-4 mb-4">
+            <div class="card z-index-2 ">
+              <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+                <div class="bg-gradient-light shadow-light border-radius-lg py-3 pe-1">
+                  <div class="chart">
+                  {val.donor}
+                  <canvas id="chart-bars" class="chart-canvas" height="170"></canvas>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+    <h4 class="mb-0 ">{val.title}</h4>
+    <p class="text-sm text-dark">{val.description}</p>
+                <hr class="dark horizontal"/>
+                <div class="d-flex ">
+                  <i class="material-icons text-sm my-auto me-1">schedule</i>
+                  <p class="mb-0 text-sm"> Updated 2 days ago </p>
+                </div>
+          <div class="d-flex" styles={{justifyContent: 'flex-end'}}>
+          <span className="button_project" >
+          <EditIcon fontSize="small" />
+          Edit
+          </span>
+          <span onClick={deleteProject(val._id)} className="button_project" >
+          <DeleteIcon fontSize="small" />
+          Delete 
+          </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          </div>
+        
+          ) )}
+      
+        </div>
+ 
+            
+            
+        )
+    
+}
+Project.propTypes = {
+    className: PropTypes.string,
+  };
+export default Project
+
+
+
+
+
+<Card 
+        styles={{ display:'flex',
+        flexDirection:'column',
+        justifyContent: 'space-between',
+        borderRadius: '15px',
+        height: '100%',
+        position: 'relative'}}>
+
+        <CardMedia 
+        styles={{ height: 0,
+        paddingTop: '56.25%',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        backgroundBlendMode:'darken'}} image={ post.selectedFile } title={ post.title } />
+
+        <div 
+        styles={{position:'absolute',
+        top:'20px',
+        left:'20px',
+        color: 'white',}}>
+        <Typography variant='h6'> {post.creator} </Typography>
+        
+        </div>
+
+          <div 
+        styles={{ display: 'flex',
+        justifyContent: 'space-between',
+        margin: '20px',}}>
+           <Typography variant='body2' color="textSecondary"> { post.tags.map((tag) => `#${ tag } ` )} </Typography>
+          </div>
+          <Typography styles={{ padding: '0, 16px'}} variant='h5' gutterBottom>{ post.title } </Typography>
+          <CardContent>
+          <Typography styles={{ padding: '0, 16px'}} variant='body' color='textSecondary' gutterBottom>{ post.message } </Typography>
+          </CardContent>
+          <CardActions 
+          styles={{padding: '0, 16px, 18px, 16px',
+        display: 'flex',
+        justifyContent:'space-between'}}>
+
+          <Button size="small" color="primary" onClick={() => dispatch(likePost(post._id))}>
+            <ThumbUpAltIcon fontSize="small" />
+            Like &nbsp;
+            { post.likeCount }
+          </Button>
+          <Button size="small" color="primary" onClick={() => setCurrentId(post._id)}>
+            <EditIcon fontSize="small" />
+            Edit
+          </Button>
+          <Button size="small" color="primary" onClick={() => 
+           {
+            <Example />
+            dispatch(deletePost(post._id));
+            <Example />
+           }}
+            >
+            <DeleteIcon fontSize="small" />
+            Delete 
+          </Button>
+
+        </CardActions>
+        <Typography variant="body2"> Updated {moment( post.createdAt ).fromNow()}</Typography>
+        </Card>
+
+
+
+
+
+
+        import React, {useState, useEffect} from 'react';
+import {Container, AppBar, Typography, Grow, Grid, Paper, TextField, Button} from "@material-ui/core";
+//import useStyles from './styles';
+import FileBase from "react-file-base64";
+import {useDispatch, useSelector} from "react-redux";
+import { createPost, updatePost } from '../../actions/projects';
+
+
+const Form = ({currentId, setCurrentId})  => {
+ // const classes = useStyles();
+const [postData, setPostData] = useState({creator: '', title: '', message: '', tags: '', selectedFile: '' });
+const post = useSelector((state) => currentId ? state.posts.find((p) => p.id == currentId) : null); 
+const dispatch = useDispatch();
+
+useEffect ( () => {
+  if(post) setPostData(post);},[post])
+
+
+
+const handleSubmit = (e) => {
+e.preventDefault();
+if(currentId){ dispatch(updatePost(currentId, postData));
+} else {dispatch(createPost(postData))
+}
+clear();
+}
+
+const clear = () => {
+  setCurrentId(null);
+  setPostData({creator: '', title: '', message: '', tags: '', selectedFile: '' });
+ }
+ 
+return (
+   
+       <Paper > 
+       <form 
+        autoComplete="off" 
+        noValidate 
+        styles={{
+        width:"100%",
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        alignItems:"center"
+      }}
+        onSubmit={handleSubmit}
+        >
+        <Typography variant="h6"  name="title" > { currentId ? `Editing a ${ currentId} Project` : "Creating a New Project" } </Typography>
+        <TextField 
+          name="creator" 
+          variant="outlined" 
+          label="creator" 
+          styles={{width:"80%", marginTop:10, marginBottom:10}}
+          value={postData.creator}
+          onChange={(e) => setPostData({...postData, creator: e.target.value})}
+          > 
+          </TextField>
+          <TextField 
+          name="title" 
+          variant="outlined" 
+          label="title" 
+          styles={{width:"80%",marginTop:10, marginBottom:10}}
+          value={postData.title}
+          onChange={(e) => setPostData({...postData, title: e.target.value})}
+          > </TextField>
+          <TextField 
+          name="message" 
+          variant="outlined" 
+          label="message" 
+          styles={{width:"80%", marginTop:10,marginBottom:10}}
+          value={postData.message}
+          onChange={(e) => setPostData({...postData, message: e.target.value})}
+          > </TextField>
+          <TextField 
+          name="tags" 
+          variant="outlined" 
+          label="tags" 
+          styles={{width:"80%", marginTop:10, marginBottom:10}}
+          value={postData.tags}
+          onChange={(e) => setPostData({...postData, tags: e.target.value})}
+          > </TextField>
+
+          <div 
+          styles={{ 
+          width:'97%',
+          marginTop:'10px'}}
+          >
+            <FileBase 
+            type="file"
+            multiple="false"
+            onDone={({base64}) => setPostData({...postData, selectedFile: base64})}
+            />
+          </div>
+          <Button 
+         style={{marginBottom:10, width:"80%", marginTop:10}} 
+          variant='contained' 
+          color="primary" 
+          size="large" 
+          type="submit"
+         
+          >
+          Submit
+          </Button>
+          <Button 
+          style={{marginBottom:10, width:"80%"}} 
+          variant='contained' 
+          color="secondary" 
+          size="large" 
+          onClick={clear}
+        
+          >
+          Clear
+          </Button>
+        </form>
+       
+       </Paper>
+    )
+}; 
+
+export default Form;
+
+
+
+
+import React, {useState, useEffect} from 'react';
+import FileBase from "react-file-base64";
+import {useDispatch, useSelector} from "react-redux";
+import { createPost, updatePost } from '../../actions/projects';
+import {Container, AppBar, Typography, Grow, Grid, Paper, TextField, Button} from "@material-ui/core";
+//import useStyles from './styles';
+
+const AddProjectForm = ({currentId, setCurrentId})  => {
+ 
+  //const classes = useStyles();
+return (
+  <Paper > 
+       <form 
+        autoComplete="off" 
+        noValidate 
+        styles={{
+        width:"100%",
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        alignItems:"center"
+      }}
+       // onSubmit={handleSubmit}
+        >
+        <Typography variant="h6"  name="title" > { currentId ? `Editing a ${ currentId} Project` : "Creating a New Project" } </Typography>
+        <TextField 
+          name="creator" 
+          variant="outlined" 
+          label="creator" 
+          styles={{width:"80%", marginTop:10, marginBottom:10}}
+       //   value={postData.creator}
+          //onChange={(e) => setPostData({...postData, creator: e.target.value})}
+          > 
+          </TextField>
+          <TextField 
+          name="title" 
+          variant="outlined" 
+          label="title" 
+          styles={{width:"80%",marginTop:10, marginBottom:10}}
+        //  value={postData.title}
+         // onChange={(e) => setPostData({...postData, title: e.target.value})}
+          > </TextField>
+          <TextField 
+          name="message" 
+          variant="outlined" 
+          label="message" 
+          styles={{width:"80%", marginTop:10,marginBottom:10}}
+         // value={postData.message}
+        //  onChange={(e) => setPostData({...postData, message: e.target.value})}
+          > </TextField>
+          <TextField 
+          name="tags" 
+          variant="outlined" 
+          label="tags" 
+          styles={{width:"80%", marginTop:10, marginBottom:10}}
+       //   value={postData.tags}
+        //  onChange={(e) => setPostData({...postData, tags: e.target.value})}
+          > </TextField>
+
+          <div 
+          styles={{ 
+          width:'97%',
+          marginTop:'10px'}}
+          >
+            <FileBase 
+            type="file"
+            multiple="false"
+          //  onDone={({base64}) => setPostData({...postData, selectedFile: base64})}
+            />
+          </div>
+          <Button 
+         style={{marginBottom:10, width:"80%", marginTop:10}} 
+          variant='contained' 
+          color="primary" 
+          size="large" 
+          type="submit"
+         
+          >
+          Submit
+          </Button>
+          <Button 
+          style={{marginBottom:10, width:"80%"}} 
+          variant='contained' 
+          color="secondary" 
+          size="large" 
+      //    onClick={clear}
+        
+          >
+          Clear
+          </Button>
+        </form>
+       
+       </Paper>
+)
+}; 
+
+export default AddProjectForm;
+
+
+
+<div className="col-lg-4 col-md-6 mt-4 mb-4">
+           <div className="card z-index-2 ">
+             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+               <div className="bg-gradient-light shadow-light border-radius-lg py-3 pe-1">
+                 <div className="chart">
+                 {project.donor}
+                 <canvas  className="chart-canvas" height="">
+                 <img src={project.selectedFile} styles={{height:10, width:10}}/>
+                 </canvas>
+                
+                 </div>
+               </div>
+             </div>
+             <div class="card-body">
+   <h4 class="mb-0 ">{project.projectTitle}</h4>
+   <h6 class="mb-0 ">{project.projectDonor}</h6>
+   <p class="text-sm text-dark">{project.projectDescription}</p>
+               <hr class="dark horizontal"/>
+               <div className="d-flex ">
+                 <i class="material-icons text-sm my-auto me-1">schedule</i>
+                 <p class="mb-0 text-sm"> Updated {moment(project.createdAt).fromNow()}</p>
+               </div>
+         <div class="d-flex" styles={{justifyContent: 'flex-end'}}>
+         <span className="button_project" >
+         <EditIcon fontSize="small" 
+         onClick={() => setCurrentId(project._id)}/>
+         Edit
+         </span>
+         <span  className="button_project" >
+         <DeleteIcon fontSize="small"  onClick={() => dispatch(deleteProject(project._id))}/>
+         Delete 
+         </span>
+               </div>
+             </div>
+           </div>
+           </div>
+
+
+
+
+            <GoogleLogin 
+       
+       
+        clientId="152962747948-urquq5h91opohea5fbqifnovblog8181.apps.googleusercontent.com"
+        render={(renderProps) => (
+            <Button 
+            classname={classes.googleButton} 
+            fullWidth color="primary" 
+            onClick={renderProps.onClick} 
+            disabled={renderProps.disabled} 
+            startIcon={<Icon />} 
+            variant='contained'
+>Google Sign In
+            </Button>
+        )}
+        onSuccess={googleSuccess}
+        onFailure={googleFailure}
+        cookiePolicy="single_host_origin"
+        />
+
+
+
+
+        import express from 'express';
+import mongoose from 'mongoose';
+import ProjectModel from '../models/project.js';
+
+const router = express.Router();
+
+export const getProjects = async (req, res) => {
+   try {
+   const projects = await ProjectModel.find();
+res.status(200).json(projects);
+   } catch(err){
+     res.status(404).json({message:err.message})
+   }
+}
+
+
+export const createProject = async (req, res) => {
+    const { projectTitle, projectDonor, projectCode, projectDuration, projectDescription, selectedFile, creator, tags } = req.body;
+    projectTitle: '', projectDonor: '', projectCode: '', projectDuration: '', projectDescription:'', selectedFile: ''
+    const newProject = new ProjectModel(project);
+    try { 
+      await newProject.save();
+      res.status(201).json(newProject);
+    } catch (err){
+       res.status(409).json({message: err.message});
+    }
+}
+
+
+export const updateProject = async (req, res) => {
+    const { id: _id } = req.params;
+   const project = req.body;
+   if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('No project with that Id');
+   const updatedProject = await ProjectModel.findByIdAndUpdate(_id, {...project, _id}, {new: true});
+   res.json(updatedProject);
+}
+
+
+
+export const deleteProject = async (req, res) => {
+   const { id } = req.params;
+  const project = req.body;
+  if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No project with that Id');
+  await ProjectModel.findByIdAndRemove(id);
+  res.json("Project deleted succefully");
+}
+
+
+
+export const likeProject = async (req, res) => {
+   const { id } = req.params;
+  if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No project with that Id');
+  const project = await ProjectModel.findById(id);
+  const updatedProject = await ProjectModel.findByIdAndUpdate(id, { likeCount: project.likeCount + 1 }, {new: true});
+  res.json(updatedProject);
+}
+
+
+
+//*********************************Tool Controller*********************************//
+
+
+
+
+
+
+
+
+
+        
+
+
+{
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": "http://localhost:5000",
+  "dependencies": {
+    "@emotion/react": "^11.10.0",
+    "@emotion/styled": "^11.10.0",
+    "@material-ui/core": "^4.12.4",
+    "@material-ui/icons": "^4.11.3",
+    "@mui/icons-material": "^5.10.2",
+    "@mui/material": "^5.10.2",
+    "@syncfusion/ej2-react-popups": "^20.2.45",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^0.27.2",
+    "chart.js": "^3.9.1",
+    "chartjs-plugin-datalabels": "^2.1.0",
+    "ejs": "^3.1.8",
+    "gridfs-stream": "^1.1.1",
+    "js-file-download": "^0.4.12",
+    "jwt-decode": "^3.1.2",
+    "method-override": "^3.0.0",
+    "moment": "^2.29.4",
+    "multer": "^1.4.5-lts.1",
+    "multer-gridfs-storage": "^5.0.2",
+    "react": "^18.2.0",
+    "react-chartjs-2": "^4.3.1",
+    "react-dom": "^18.2.0",
+    "react-file-base64": "^1.0.3",
+    "react-google-login": "^5.2.2",
+    "react-icons": "^4.4.0",
+    "react-redux": "^8.0.2",
+    "react-scripts": "5.0.1",
+    "reactstrap": "^9.1.4",
+    "redux": "^4.2.0",
+    "redux-thunk": "^2.4.1",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "react-router-dom": "^6.3.0"
+  }
+}
+
+
+
+
+
+
+
+
+export const signup = async (req, res) => {
+    const { firstName, lastName , email, password, confirmPassword} = req.body;
+
+    try {
+       // const existingUser = await User.findOne({ email });
+
+       // if(existingUser) return res.status(400).json({ message: "User already exist"});
+
+        //if(password !== confirmPassword) return res.status(400).json({ message: "Password don't match!"});
+
+        const hashedPassword = await bcrypt.hash(password, 12);
+
+        const result = await User.create({ firstName,lastName, email, password: hashedPassword, confirmPassword })
+
+        
+        const token = jwt.sign({ email: result.email, id: result._id }, 'test', { expiresIn: "1h" });
+
+        res.status(200).json({ result, token});
+    } catch (error) {
+        res.status(500).json({ message: 'Something went wrong' });
+    }
+}
+
+
+
+//router data
+import express from "express";
+import { getProjects, createProject, updateProject, deleteProject} from '../controllers/project.js';
+import auth from '../middleware/auth.js';
+const router = express.Router();
+
+//Project routes
+router.get('/', getProjects);
+router.post('/', createProject);
+router.patch('/:id',  updateProject);
+router.delete('/:id', deleteProject);
+//router.delete('/:id', auth, deleteProject);
+
+export default router;
+
+
+
+
+///Froth auth
+import React, {Fragment, useState} from 'react';
+import {Container, IconButton, InputAdornment, AppBar, Paper, TextField,Typography, Grow, Grid, RootRef,Button , Avatar, Toolbar} from "@material-ui/core";
+import {GoogleLogin} from 'react-google-login';
+import useStyles from './styles';
+import Input from './input';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Icon from './icon';
+import {useDispatch} from 'react-redux';
+import {useNavigate} from 'react-router-dom';
+import { signin, signup } from '../../actions/auth';
+
+const initialState = { firstName:'', lastName:'', email:'', password:'', confirmPassword:'' }
+
+const Auth = () =>  {
+
+const classes = useStyles();
+const dispatch = useDispatch();
+const history = useNavigate();
+const [ formData, setFormData ] = useState(initialState);
+const [ showPassword, setShowPassword ] = useState(false);
+const [ isSignUp, setIsSignUp ] = useState(false)
+   
+
+const handleSubmit = (e) => { 
+        e.preventDefault();
+        console.log(formData);
+        if(isSignUp){
+            dispatch(signup(formData, history))
+        } else {
+          dispatch(signin(formData, history))   
+        }
+    };
+
+const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword );
+
+const handleChange = (e)=> {setFormData({ ...formData,[e.target.name]: e.target.value })}
+
+const switchMode = () => {
+        setIsSignUp((prevIsSignUp) => !prevIsSignUp);
+        setShowPassword(false);
+    };
+
+    //const googleSuccess = async (res) => {
+      //     const result = res?.profileObj
+        //    const token = res?.tokenId;
+           // try{
+          //          dispatch({type:"AUTH", data: {result, token}})
+             //       history.push('/')
+        //    }catch(err){
+          //              console.log(err)
+          //  }
+   // }
+
+    
+    //const googleFailure = (error) => {
+      //  console.log(error)
+       // console.log("Sign In Unsuccessful")
+   // }
+
+    return (
+    <Container fullWidth fullHeight>
+        <Container component="main" maxWidth='xs' >
+             <Paper className={classes.paper} elevation={3}>
+                 <Avatar className={classes.avatar}>
+                    <LockOutlinedIcon/>
+                 </Avatar>
+    <Typography variant='h5'>{isSignUp ? "Sign up": "Sign in"}</Typography>
+    <form className={classes.form} onSubmit={handleSubmit}>
+        <Grid container spacing={2}>
+            {
+                isSignUp &&  (
+                <Fragment>                  
+                    <Input name ="firstName" label="First Name" handleChange={handleChange} autoFocus half/>
+                    <Input name ="lastName" label="Last Name" handleChange={handleChange} half/>
+                </Fragment>
+                )}
+                <Input name='email'label='Email Address' handleChange={handleChange} type='email'/>
+                <Input name='password' label='Password' handleChange={handleChange} type={showPassword ? 'text': 'password'} handleShowPassword={handleShowPassword}/>
+                { isSignUp && <Input name= "confirmPassword" label="Repeat Password" handleChange={handleChange} type="password"/>}
+        </Grid>
+       
+        <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
+            {isSignUp ?  'Sign Up' : " Sign In"}
+        </Button>
+       
+
+
+
+
+
+
+
+
+
+
+
+
+       
+        <Grid container justify="flex-end">
+                    <Grid item>
+                        <Button onClick={switchMode}>
+                            {isSignUp ? 'Already have an account? Sign In' : ' Dont have an account? Sign up'}
+                        </Button>
+                    </Grid>
+        </Grid>
+    </form>
+             </Paper>
+        </Container>
+        </Container>
+    )
+}
+
+export default Auth
+
+
+import jwt, { decode } from 'jsonwebtoken';
+
+const auth = async (req, res, next) => {
+    try {
+        const token = req.headers.authorization.split(' ')[1];
+        const isCustomAuth = token.length < 500;
+
+        let decodedData;
+        if(token && isCustomAuth) {
+            decodedData = jwt.verify(token, process.env.JWT_SECRET);
+            req.userId = decodedData?.id;
+        }else{
+            decodedData = jwt.decode(token);
+              req.userId = decodedData?.sub;
+        }
+        next();
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export default auth;
+
+
+
+
+
+
+
+
+
+
+
+
+import React, {useState, useEffect, Fragment} from 'react';
+import {Card, CardActions, CardContent, CardMedia, Typography}  from "@material-ui/core";
+import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
+import DeleteIcon from "@material-ui/icons/Delete";
+import moment from "moment";
+import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
+import EditIcon from '@mui/icons-material/Edit';
+import FileBase from "react-file-base64";
+import { useDispatch } from 'react-redux';
+import { deleteTool } from "../../../actions/tools";
+//import '../toolStyle.css';
+import fileDownload from 'js-file-download';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter,Form, FormGroup, Label, Input} from 'reactstrap';
+import axios from 'axios';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import AssessmentIcon from '@mui/icons-material/Assessment';
+import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
+import {useSelector} from "react-redux"; 
+import { createTool, updateTool } from '../../../actions/tools';
+
+
+const AddTool = ({currentId,tool, setCurrentId }, props )  => {
+  const { className } = props;
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
+  const closeBtn = (
+  <button className="close" onClick={toggle} type="button">
+    &times;
+  </button>
+    );
+
+
+    const [toolData, setToolData] = useState({toolName: '', toolDescription: '', toolFrequency: '', toolFormat: '', toolResponsible:'', selectedFile: '' });
+    //const project_ = useSelector((state) => (currentId ? state.projects.find((p) => p._id === currentId) : null)); 
+    const dispatch = useDispatch();
+
+    useEffect ( () => {
+      if(tool) setToolData(tool);},[tool]);
+
+ const clear = () => {
+        setCurrentId(0);
+         setToolData({toolName: '', toolDescription: '', toolFrequency: '', toolFormat: '', toolResponsible:'', selectedFile: '' });
+};
+
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      if(tool._id === 0){ 
+        dispatch(createTool(toolData));
+      } else {dispatch(updateTool(tool._id, toolData))
+      clear();
+      }
+      toggle()
+  };
+
+
+  const handleDownload = (url, filename) => {
+    axios.get(url, {
+      responseType: 'blob',
+    })
+    .then((res) => {
+      fileDownload(res.data, filename)
+    })
+  }
+
+
+const handleEdit = async (e) => {
+  e.preventDefault();
+  toggle();
+  setCurrentId(tool._id)
+
+}
+
+
+  const section = {
+  height:'400px',
+    margin: 25,
+    backgroundColor: "",
+    fontSize:'12px'
+  };
+
+    return (
+      <>
+
+           <div class="card " style={section}>
+             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-0 bg-transparent">
+               <div class="bg-gradient-light shadow-light border-radius-lg py-3 pe-1 h-10">
+                 <div class="chart h-20">
+               
+                 
+                
+                 </div>
+               </div>
+             </div>
+             <div class="card-body h-20">
+   <h6 class="mb-0">{tool.toolFormat}</h6>
+   <h9 class="mb-0"><span  class="text-danger text-sm">Tool Name: </span>{ tool.toolName}</h9>
+   <p class="text-sm" ><span class="text-success">Tool Description: </span>{ tool.toolDescription}</p>
+               <hr class="dark horizontal"/>
+               <div class="d-flex">
+                 <i class="material-icons text-sm my-auto me-1">schedule</i>
+                 <p class="mb-0 text-sm"> Updated {moment(tool.createdAt).fromNow()}</p>
+               </div>
+         <div class="d-flex" styles={{justifyContent: 'flex-end'}}>
+         <span class='m-2' >
+         <EditIcon fontSize="small" 
+         onClick={handleEdit}/>
+         Edit
+         </span>
+         <span  class='m-2' >
+         <DeleteIcon fontSize="small"  onClick={() => dispatch(deleteTool(tool._id))}/>
+         Delete                         
+         </span>
+         <span  class='m-2' >
+         <Link to="indicator"> 
+         <DashboardIcon fontSize="small"  /> 
+         Indicators</Link>
+         </span>
+         <span  class='m-2' >
+         <AssessmentIcon fontSize="small"/> 
+         Report 
+         </span>
+               </div>
+              
+             </div>
+            <Modal isOpen={modal} toggle={toggle} className={className}>
+        <ModalHeader toggle={toggle} close={closeBtn}>
+        {tool._id ? "Edit " : "Add New "} Tool
+        </ModalHeader>
+        <ModalBody>
+      <Form  autoComplete='off' noValidate onSubmit={handleSubmit}>
+ <FormGroup >
+   <Label for="toolName" >
+     Tool Name
+   </Label>
+   <Input
+   className="square border border-muted"
+     id="toolName"
+     name="toolName"
+     type="text"
+     value={toolData.toolName}
+      onChange={(e) => setToolData({...toolData, toolName: e.target.value})}
+   />
+ </FormGroup>
+ <FormGroup>
+   <Label for="toolDescription">
+     Tool Description
+   </Label>
+   <Input
+   className="square border border-muted"
+     id="toolDescription"
+     name="toolDescription"
+     type="text"
+     value={toolData.toolDescription}
+     onChange={(e) => setToolData({...toolData, toolDescription: e.target.value})}
+   />
+ </FormGroup>
+ <FormGroup>
+   <Label for="frequency">
+     Frequency
+   </Label>
+   <Input
+   className="square border border-muted"
+     id="frequency"
+     name="frequency"
+     type="select"
+     value={toolData.toolFrequency}
+     onChange={(e) => setToolData({...toolData, toolFrequency: e.target.value})}
+   >
+    <option></option>
+    <option>Once</option>
+     <option>Daily</option>
+     <option>Weekly</option>
+     <option>Monthly</option>
+     <option>Quarterly/Termly</option>
+     <option>Bi-annually</option>
+     <option>Annually</option>
+     <option>On Demand</option>
+   </Input>
+ </FormGroup>
+ 
+ <FormGroup>
+   <Label for="toolFormat">
+     Format 
+   </Label>
+   <Input
+   className="square border border-muted"
+     id="toolFormat"
+     name="toolFormat"
+     type="select"
+     value={toolData.toolFormat}
+     onChange={(e) => setToolData({...toolData, toolFormat: e.target.value})}
+   >
+    <option></option>
+    <option>PAPI (Hard copy)</option>
+     <option>CAPI (Electronic)</option>
+     <option>PAPI and CAPI</option>
+   </Input>
+ </FormGroup>
+ 
+ <FormGroup>
+   <Label for="toolResponsible">
+    Responsible (Required by)
+   </Label>
+   <Input
+   className="square border border-muted"
+     id="toolRespopnsible"
+     name="toolResponsible"
+     type="select"
+     value={toolData.toolResponsible}
+     onChange={(e) => setToolData({...toolData, toolResponsible: e.target.value})}
+   >
+    <option></option>
+     <option>Education</option>
+     <option>Protection</option>
+     <option>Livelihood</option>
+     <option>MEAL</option>
+     <option>Finance</option>
+     <option>Operations</option>
+     <option>Others</option>
+   </Input>
+ </FormGroup>
+ 
+ <FormGroup>
+   <Label for="tool">Upload Tool</Label>
+   <FileBase
+   className="square border border-muted"
+     id="tool"
+     name="tool"
+     type="file"
+     required
+     multiple={false}
+     onDone={({base64}) => setToolData({...toolData, selectedFile: base64})}
+   />
+ </FormGroup>
+ <Button color="primary">
+          {currentId ? "Update " : "Add New "} Tool
+          </Button>{' '}
+          <Button color="secondary" onClick={clear}>
+            Clear
+          </Button>
+</Form>
+  </ModalBody>
+        <ModalFooter>
+        
+        </ModalFooter>
+      </Modal>
+           </div>
+         
+         </>
+    )
+}; 
+AddTool.propTypes = {
+    className: PropTypes.string,
+  };   
+export default AddTool;
+
+
+ <td>
+    <button onClick={() => {handleDownload('http://localhost:5000/projects', tool.selectedFile)}} type="button" class="btn btn-primary m-2"><i class="fas fa-download"></i></button>
+    <button  onClick={() => setCurrentId(tool._id)} type="button" class="btn btn-success m-2"><i class="fas fa-edit"></i></button>
+    <button onClick={() => dispatch(deleteProject(tool._id))} type="button" class="btn btn-danger m-2"><i class="far fa-trash-alt"></i></button>
+    </td>
+
+
+
+
+          <Form  autoComplete='off' noValidate onSubmit={handleSubmit}>
+ <FormGroup >
+   <Label for="indicatorTitle" >
+     Indicator Title
+   </Label>
+   <Input
+   className="square border border-muted"
+     id="indicatorTitle"
+     name="indicatorTitle"
+     type="text"
+     value={indicatorData.indicatorTitle}
+      onChange={(e) => setIndicatorData({...indicatorData, indicatorTitle: e.target.value})}
+   />
+ </FormGroup>
+ <FormGroup>
+          <Label for="Project Name"> Project Name</Label>
+          <Input type="select" 
+          name="projectName" 
+          id="projectName"
+           value={indicatorData.projectName}
+        onChange={(e) => setIndicatorData({...indicatorData, projectName: e.target.value})}
+
+          >
+            <option>GIZ</option>
+            <option>EU</option>
+            <option>EFECT</option>
+            <option>NHF</option>
+            <option>ECW</option>
+          </Input>
+        </FormGroup>
+
+ <Button color="primary">
+          {currentId ? "Update " : "Add New "} Tool
+          </Button>{' '}
+          <Button color="secondary" onClick={clear}>
+            Clear
+          </Button>
+</Form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import React, {useState, useEffect, Fragment} from 'react';
+import {Card, CardActions, CardContent, CardMedia, Typography}  from "@material-ui/core";
+import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
+import DeleteIcon from "@material-ui/icons/Delete";
+import moment from "moment";
+import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
+import EditIcon from '@mui/icons-material/Edit';
+import FileBase from "react-file-base64";
+import { useDispatch } from 'react-redux';
+import { deleteIndicator } from "../../../actions/indicators";
+import '../../toolStyle.css';
+import fileDownload from 'js-file-download';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter,Form, FormGroup, Label, Input} from 'reactstrap';
+import axios from 'axios';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import AssessmentIcon from '@mui/icons-material/Assessment';
+import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
+import {useSelector} from "react-redux";
+import { createIndicator, updateIndicator } from '../../../actions/indicators';
+
+
+const AddIndicator = ({currentId,indicator, setCurrentId }, props )  => {
+  const { className } = props;
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
+  const closeBtn = (
+  <button className="close" onClick={toggle} type="button">
+    &times;
+  </button>
+    );
+
+
+    const [indicatorData, setIndicatorData] = useState({indicatorTitle: '', projectName: '' });
+    //const project_ = useSelector((state) => (currentId ? state.projects.find((p) => p._id === currentId) : null)); 
+    const dispatch = useDispatch();
+
+    useEffect ( () => {
+      if(indicator) setIndicatorData(indicator);},[indicator]);
+
+ const clear = () => {
+        setCurrentId(0);
+         setIndicatorData({indicatorTitle: '', projectName: '' });
+};
+
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      if(indicator._id === 0){ 
+        dispatch(createIndicator(indicatorData));
+      } else {dispatch(updateIndicator(indicator._id, indicatorData))
+      clear();
+      }
+      toggle()
+  };
+
+
+  const handleDownload = (url, filename) => {
+    axios.get(url, {
+      responseType: 'blob',
+    })
+    .then((res) => {
+      fileDownload(res.data, filename)
+    })
+  }
+
+
+const handleEdit = async (e) => {
+  e.preventDefault();
+  toggle();
+  setCurrentId(indicator._id)
+
+}
+
+
+  const section = {
+  height:'250px',
+    margin: 25,
+    backgroundColor: "",
+    fontSize:'12px'
+  };
+
+    return (
+      <>
+
+           <div class="card " style={section}>
+             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-0 bg-transparent">
+               <div class="bg-gradient-light shadow-light border-radius-lg py-3 pe-1 h-10">
+                 <div class="chart h-20">
+               
+                 
+                
+                 </div>
+               </div>
+             </div>
+             <div class="card-body h-20">
+ 
+   <h9 class="mb-0 text-sm lead" ><span  class="text-danger ">Title: </span>{ indicator.indicatorTitle}</h9>
+   <p class="text-sm" ><span class="text-success">Description: </span></p>
+     <p class="mb-0">{indicator.projectName}</p>
+               <hr class="dark horizontal"/>
+               <div class="d-flex">
+                 <i class="material-icons text-sm my-auto me-1">schedule</i>
+                 <p class="mb-0 text-sm"> Uploaded {moment(indicator.createdAt).fromNow()}</p>
+               </div>
+         <div class="d-flex" styles={{justifyContent: 'flex-end'}}>
+         <span class='m-2' >
+          <button onClick={() => {handleDownload('http://localhost:5000/projects', indicator.selectedFile)}} type="button" class="btn btn-primary m-3 btn-sm"><i class="fas fa-download"></i></button>
+    <button  onClick={handleEdit} type="button" class="btn btn-success m-3 btn-sm"><i class="fas fa-edit"></i></button>
+    <button onClick={() => dispatch(deleteIndicator(indicator._id))} type="button" class="btn btn-danger m-3 btn-sm"><i class="far fa-trash-alt "></i></button>
+         </span>
+               </div>
+              
+             </div>
+            <Modal isOpen={modal} toggle={toggle} className={className}>
+        <ModalHeader toggle={toggle} close={closeBtn}>
+        {indicator._id ? "Edit " : "Add New "} Indicator
+        </ModalHeader>
+        <ModalBody>
+ <Form  autoComplete='off' noValidate onSubmit={handleSubmit}>
+ <FormGroup >
+   <Label for="indicatorTitle" >
+     Indicator Title
+   </Label>
+   <Input
+   className="square border border-muted"
+     id="indicatorTitle"
+     name="indicatorTitle"
+     type="text"
+     value={indicatorData.indicatorTitle}
+      onChange={(e) => setIndicatorData({...indicatorData, indicatorTitle: e.target.value})}
+   />
+ </FormGroup>
+ <FormGroup>
+          <Label for="projectName"> Project Name</Label>
+          <Input type="select" 
+          name="projectName" 
+          id="projectName"
+           value={indicatorData.projectName}
+        onChange={(e) => setIndicatorData({...indicatorData, projectName: e.target.value})}
+
+          >
+           <option></option>
+            <option>GIZ</option>
+            <option>EU</option>
+            <option>EFECT</option>
+            <option>NHF</option>
+            <option>ECW</option>
+          </Input>
+        </FormGroup>
+<FormGroup>
+          <Label for="indicatorComponent "> Indicator Component (Sector)</Label>
+          <Input type="select" 
+          name="indicatorComponent" 
+          id="indicatorComponent"
+           value={indicatorData.indicatorComponent}
+        onChange={(e) => setIndicatorData({...indicatorData, indicatorComponent: e.target.value})}
+
+          >
+           <option></option>
+            <option>Education</option>
+            <option>Livelihood</option>
+            <option>Protection</option>
+           
+          </Input>
+        </FormGroup>
+        <FormGroup >
+   <Label for="indicatorTarget" >
+     Indicator Target
+   </Label>
+   <Input
+   className="square border border-muted"
+     id="indicatorTarget"
+     name="indicatorTarget"
+     type="number"
+     value={indicatorData.indicatorTarget}
+      onChange={(e) => setIndicatorData({...indicatorData, indicatorTarget: e.target.value})}
+   />
+ </FormGroup>
+ <FormGroup >
+   <Label for="indicatorBaseline" >
+     Indicator Baseline
+   </Label>
+   <Input
+   className="square border border-muted"
+     id="indicatorBaseline"
+     name="indicatorBaseline"
+     type="number"
+     value={indicatorData.indicatorBaseline}
+      onChange={(e) => setIndicatorData({...indicatorData, indicatorBaseline: e.target.value})}
+   />
+ </FormGroup>
+ <FormGroup>
+          <Label for="reportQuarter"> Reporting Quarter</Label>
+          <Input type="select" 
+          name="reportQuarter" 
+          id="reportQuarter"
+           value={indicatorData.reportQuarter}
+        onChange={(e) => setIndicatorData({...indicatorData, reportQuarter: e.target.value})}
+
+          >
+           <option></option>
+            <option>1st</option>
+            <option>2nd</option>
+            <option>3rd</option>
+            <option>4th</option>
+          </Input>
+        </FormGroup>
+         <FormGroup >
+   <Label for="educationBoysReached" >
+     Total Number of Boys reached (Education)
+   </Label>
+   <Input
+   className="square border border-muted"
+     id="educationBoysReached"
+     name="educationBoysReached"
+     type="number"
+     value={indicatorData.educationBoysReached}
+      onChange={(e) => setIndicatorData({...indicatorData, educationBoysReached: e.target.value})}
+   />
+ </FormGroup>
+  <FormGroup >
+   <Label for="educationGirlsReached" >
+     Total Number of Girls reached (Education)
+   </Label>
+   <Input
+   className="square border border-muted"
+     id="educationGirlsReached"
+     name="educationGirlsReached"
+     type="number"
+     value={indicatorData.educationGirlsReached}
+      onChange={(e) => setIndicatorData({...indicatorData, educationGirlsReached: e.target.value})}
+   />
+ </FormGroup>
+ 
+ <FormGroup >
+   <Label for="educationMenReached" >
+     Total Number of Men reached (Education)
+   </Label>
+   <Input
+   className="square border border-muted"
+     id="educationMenReached"
+     name="educationMenReached"
+     type="number"
+     value={indicatorData.educationMenReached}
+      onChange={(e) => setIndicatorData({...indicatorData, educationMenReached: e.target.value})}
+   />
+ </FormGroup>
+ <FormGroup >
+   <Label for="educationWomenReached" >
+     Total Number of Women reached (Education)
+   </Label>
+   <Input
+   className="square border border-muted"
+     id="educationWomenReached"
+     name="educationWomenReached"
+     type="number"
+     value={indicatorData.educationWomenReached}
+      onChange={(e) => setIndicatorData({...indicatorData, educationWomenReached: e.target.value})}
+   />
+ </FormGroup>
+ <FormGroup >
+   <Label for="educationPWDsReached" >
+     Total Number of PWDs reached (Education)
+   </Label>
+   <Input
+   className="square border border-muted"
+     id="educationPWDsReached"
+     name="educationPWDsReached"
+     type="number"
+     value={indicatorData.educationPWDsReached}
+      onChange={(e) => setIndicatorData({...indicatorData, educationPWDsReached: e.target.value})}
+   />
+ </FormGroup>
+ <FormGroup >
+   <Label for="tlsBuilt" >
+     Total Number of TLS Built/Renovated (Education)
+   </Label>
+   <Input
+   className="square border border-muted"
+     id="tlsBuilt"
+     name="tlsBuilt"
+     type="number"
+     value={indicatorData.tlsBuilt}
+      onChange={(e) => setIndicatorData({...indicatorData, tlsBuilt: e.target.value})}
+   />
+ </FormGroup>
+ <FormGroup >
+   <Label for="protectionBoysReached" >
+     Total Number of Boys reached (Protection)
+   </Label>
+   <Input
+   className="square border border-muted"
+     id="protectionBoysReached"
+     name="protectionBoysReached"
+     type="number"
+     value={indicatorData.protectionBoysReached}
+      onChange={(e) => setIndicatorData({...indicatorData, protectionBoysReached: e.target.value})}
+   />
+ </FormGroup>
+ <FormGroup >
+   <Label for="protectionGirlsReached" >
+     Total Number of Girls reached (Protection)
+   </Label>
+   <Input
+   className="square border border-muted"
+     id="protectionGirlsReached"
+     name="protectionGirlsReached"
+     type="number"
+     value={indicatorData.protectionGirlsReached}
+      onChange={(e) => setIndicatorData({...indicatorData, protectionGirlsReached: e.target.value})}
+   />
+ </FormGroup>
+ <FormGroup >
+   <Label for="protectionMenReached" >
+     Total Number of Men reached (Protection)
+   </Label>
+   <Input
+   className="square border border-muted"
+     id="protectionMenReached"
+     name="protectionMenReached"
+     type="text"
+     value={indicatorData.protectionMenReached}
+      onChange={(e) => setIndicatorData({...indicatorData, protectionMenReached: e.target.value})}
+   />
+ </FormGroup>
+ <FormGroup >
+   <Label for="protectionWomenReached" >
+     Total Number of Women reached (Protection)
+   </Label>
+   <Input
+   className="square border border-muted"
+     id="protectionWomenReached"
+     name="protectionWomenReached"
+     type="number"
+     value={indicatorData.protectionWomenReached}
+      onChange={(e) => setIndicatorData({...indicatorData, protectionWomenReached: e.target.value})}
+   />
+ </FormGroup>
+ <FormGroup >
+   <Label for="protectionPWDsReached" >
+     Total Number of PWDs reached (Protection)
+   </Label>
+   <Input
+   className="square border border-muted"
+     id="protectionPWDsReached"
+     name="protectionPWDsReached"
+     type="number"
+     value={indicatorData.protectionPWDsReached}
+      onChange={(e) => setIndicatorData({...indicatorData, protectionPWDsReached: e.target.value})}
+   />
+ </FormGroup>
+ <FormGroup >
+   <Label for="livelihoodBoysReached" >
+     Total Number of Boys reached (Livelihood)
+   </Label>
+   <Input
+   className="square border border-muted"
+     id="livelihoodBoysReached"
+     name="livelihoodBoysReached"
+     type="number"
+     value={indicatorData.livelihoodBoysReached}
+      onChange={(e) => setIndicatorData({...indicatorData, livelihoodBoysReached: e.target.value})}
+   />
+ </FormGroup>
+ <FormGroup >
+   <Label for="livelihoodGirlsReached" >
+     Total Number of Girls reached (Livelihood)
+   </Label>
+   <Input
+   className="square border border-muted"
+     id="livelihoodGirlsReached"
+     name="livelihoodGirlsReached"
+     type="number"
+     value={indicatorData.livelihoodGirlsReached}
+      onChange={(e) => setIndicatorData({...indicatorData, livelihoodGirlsReached: e.target.value})}
+   />
+ </FormGroup>
+ <FormGroup >
+   <Label for="livelihoodMenReached" >
+     Total Number of Men reached (Livelihood)
+   </Label>
+   <Input
+   className="square border border-muted"
+     id="livelihoodMenReached"
+     name="livelihoodMenReached"
+     type="number"
+     value={indicatorData.livelihoodMenReached}
+      onChange={(e) => setIndicatorData({...indicatorData, livelihoodMenReached: e.target.value})}
+   />
+ </FormGroup>
+ <FormGroup >
+   <Label for="livelihoodWomenReached" >
+     Total Number of Women reached (Livelihood)
+   </Label>
+   <Input
+   className="square border border-muted"
+     id="livelihoodWomenReached"
+     name="livelihoodWomenReached"
+     type="number"
+     value={indicatorData.livelihoodWomenReached}
+      onChange={(e) => setIndicatorData({...indicatorData, livelihoodWomenReached: e.target.value})}
+   />
+ </FormGroup>
+ <FormGroup >
+   <Label for="livelihoodPWDsReached" >
+     Total Number of PWDs reached (Livelihood)
+   </Label>
+   <Input
+   className="square border border-muted"
+     id="livelihoodPWDsReached"
+     name="livelihoodPWDsReached"
+     type="number"
+     value={indicatorData.livelihoodPWDsReached}
+      onChange={(e) => setIndicatorData({...indicatorData, livelihoodPWDsReached: e.target.value})}
+   />
+ </FormGroup>
+ <FormGroup >
+   <Label for="newTargetReached" >
+     New Target Reached (Reporting Quarter)
+   </Label>
+   <Input
+   className="square border border-muted"
+     id="newTargetReached"
+     name="newTargetReached"
+     type="number"
+     value={indicatorData.newTargetReached}
+      onChange={(e) => setIndicatorData({...indicatorData, newTargetReached: e.target.value})}
+   />
+ </FormGroup>
+ <FormGroup >
+   <Label for="overallTargetReached" >
+     Overall Target Reached
+   </Label>
+   <Input
+   className="square border border-muted"
+     id="overallTargetReached"
+     name="overallTargetReached"
+     type="number"
+     value={indicatorData.overallTargetReached}
+      onChange={(e) => setIndicatorData({...indicatorData, overallTargetReached: e.target.value})}
+   />
+ </FormGroup>
+ <Button color="primary">
+          {indicator._id ? "Update " : "Add New "} Indicator 
+          </Button>{' '}
+          <Button color="secondary" onClick={clear}>
+            Clear
+          </Button>
+</Form>
+  </ModalBody>
+        <ModalFooter>
+        
+        </ModalFooter>
+      </Modal>
+           </div>
+         
+
+         </>
+    )
+}; 
+AddIndicator.propTypes = {
+    className: PropTypes.string,
+  };   
+export default AddIndicator;
