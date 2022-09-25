@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const api = axios.create({ baseURL: 'https://sc-meal-nigeria.herokuapp.com/' });
+const api = axios.create({ baseURL: 'http://localhost:5000' });
 //const url = 'http://localhost:5000/Indicators';
 //const url2 = 'http://localhost:5000/tools';
 //const url3 = 'http://localhost:5000/users/signup';
